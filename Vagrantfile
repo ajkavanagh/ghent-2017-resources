@@ -11,7 +11,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu/trusty64"
+  # Due to https://bugs.launchpad.net/cloud-images/+bug/1569237 we can't use ubunut/xenial64
+  #config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "bento/ubuntu-16.10"
+
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -29,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
-  config.vm.network "private_network", ip: "10.11.12.21"
+  #config.vm.network "private_network", ip: "10.11.12.21"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -45,11 +48,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  if !is_windows
-    config.vm.synced_folder ".", "/vagrant", type: "nfs", nfs_udp: false, mount_options: ['actimeo=1']
-  else
-    config.vm.synced_folder ".", "/vagrant"
-  end
+  #if !is_windows
+    #config.vm.synced_folder ".", "/vagrant", type: "nfs", nfs_udp: false, mount_options: ['actimeo=1']
+  #else
+    #config.vm.synced_folder ".", "/vagrant"
+  #end
+  config.vm.synced_folder ".", "/vagrant"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -67,6 +71,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
     vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
   end
 
   #

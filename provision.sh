@@ -12,6 +12,7 @@ CONF_FILES='/vagrant/provision'
 apt-get update -y
 apt-get purge -y chef chef-zero puppet
 apt-get autoremove -y
+apt-get upgrade
 
 # We need to get our key for github into the Vagrant box.
 h="github.com"
