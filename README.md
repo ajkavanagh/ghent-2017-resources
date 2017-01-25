@@ -35,7 +35,8 @@ meta key, as the author used GNE screen for years.
 
 ## Configuration Files
 
-In the `provision` directory, there are various configuration files that are used when building the Vagrant box.  These are:
+In the `provision` directory, there are various configuration files that are
+used when building the Vagrant box.  These are:
 
 * `dot.bashrc`: This becomes .bashrc in the `/home/vagrant` folder.  This is
   the standard Ubuntu 14.04 .bashrc with a few extra bits to work with
@@ -92,5 +93,5 @@ for experimentation with Juju.
 
 # What next?
 
-Take a look at the "Writing Better Charms" workshop notes (TBA) that shows how
+Take a look at the ["Writing Better Charms" workshop notes](https://goo.gl/zFeooJ) that shows how
 to write and debug charms.
